@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ôn Đề – Lặp lại ngắt quãng</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F6FC;--sf:#fff;--ink:#2e3445;--mu:#667085;--ln:#e2e6f1;--red:#d92d20;--redbg:#fdecea;--amb:#b54708;--ambbg:#fef3e2;--grn:#0e8a4f;--grnbg:#e2f6ea;--acc:#7067D8;--accbg:#F0ECFF;
+--l1:#e5484d;--l2:#f59e0b;--l3:#3b9ae8;--l4:#2fae72;--l5:#7067D8;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f141c;--sf:#171e29;--ink:#e8ecf3;--mu:#98a2b3;--ln:#2a3342;--redbg:#3a1a18;--ambbg:#352612;--grnbg:#10301f;--acc:#8fa8ff;--accbg:#1c2744;--red:#ff6b5e;--l1:#ff6b5e;--l5:#8fa8ff}}
+:root[data-theme="dark"]{--bg:#0f141c;--sf:#171e29;--ink:#e8ecf3;--mu:#98a2b3;--ln:#2a3342;--redbg:#3a1a18;--ambbg:#352612;--grnbg:#10301f;--acc:#8fa8ff;--accbg:#1c2744;--red:#ff6b5e;--l1:#ff6b5e;--l5:#8fa8ff}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:400 14px/1.5 "Be Vietnam Pro",system-ui,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--sf);border-bottom:1px solid var(--ln);display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;padding:10px 16px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--sf);z-index:10}
+h1{font-size:17px;margin:0;font-weight:700}h2{font-size:15px;margin:0 0 8px;font-weight:600}
+nav{display:flex;gap:4px;overflow-x:auto}nav button{border:0;background:none;color:var(--mu);padding:6px 12px;border-radius:8px;font:inherit;font-weight:500;cursor:pointer}
+nav button.on{background:var(--accbg);color:var(--acc)}
+.sp{flex:1}main{padding:16px;max-width:1500px;margin:auto}
+button,input,select,textarea{font:inherit;color:inherit}
+.btn{border:1px solid var(--ln);background:var(--sf);padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:500}
+.btn:hover{border-color:var(--acc)}.btn.p{background:var(--acc);color:#fff;border-color:var(--acc)}.btn.ok{background:var(--grn);color:#fff;border-color:var(--grn)}.btn.no{background:var(--red);color:#fff;border-color:var(--red)}.btn.s{padding:3px 9px;font-size:12px}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+input,select,textarea{background:var(--sf);border:1px solid var(--ln);border-radius:8px;padding:6px 10px;width:100%}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.bar>*{width:auto;flex:1 1 140px}.bar input{flex:2 1 200px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:16px}
+.tile{background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:12px}.tile b{font-size:26px;display:block;line-height:1.1}.tile span{color:var(--mu);font-size:12px}
+.tile.r{border-color:var(--red);background:var(--redbg)}.tile.r b{color:var(--red)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.panel{background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:12px}.panel.r{border:2px solid var(--red)}
+.board{display:grid;grid-template-columns:repeat(5,minmax(230px,1fr));gap:10px;overflow-x:auto;padding-bottom:8px}
+.col{background:color-mix(in srgb,var(--c,var(--ln)) 8%,var(--sf));border:1px solid var(--ln);border-radius:10px;min-height:200px;display:flex;flex-direction:column}
+.col h3{margin:0;padding:10px 12px;font-size:13px;border-top:4px solid var(--c);border-radius:10px 10px 0 0;background:var(--sf);display:flex;justify-content:space-between}
+.col .cs{padding:8px;display:flex;flex-direction:column;gap:8px}
+.card{background:var(--sf);border:1px solid var(--ln);border-left:4px solid var(--c);border-radius:8px;padding:9px 10px}
+.card.over{border-color:var(--red);border-left-color:var(--red);background:var(--redbg)}.card.today{border-left-color:var(--red)}
+.card .t{font-weight:600;margin-bottom:2px;word-break:break-word}.m{color:var(--mu);font-size:12px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;align-items:center}
+.bd{font-size:11px;padding:1px 7px;border-radius:99px;font-weight:600;background:var(--accbg);color:var(--acc)}
+.bd.over{background:var(--red);color:#fff}.bd.today{background:var(--redbg);color:var(--red)}.bd.later{background:var(--grnbg);color:var(--grn)}.bd.lv{background:var(--bg);color:var(--ink);border:1px solid var(--ln)}
+.empty{color:var(--mu);font-size:12px;padding:6px;text-align:center}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--ln);vertical-align:top}th{color:var(--mu);font-weight:500;font-size:12px}
+.tw{overflow-x:auto}
+.pg{height:8px;background:var(--bg);border-radius:9px;overflow:hidden;min-width:80px}.pg i{display:block;height:100%;background:var(--grn)}
+#modal{position:fixed;inset:0;background:rgba(10,15,25,.55);display:none;align-items:flex-start;justify-content:center;overflow:auto;padding:20px 12px;z-index:50}
+#modal.on{display:flex}.dlg{background:var(--sf);border-radius:12px;max-width:640px;width:100%;padding:16px;border:1px solid var(--ln)}
+.f{display:grid;grid-template-columns:1fr 1fr;gap:10px}.f label{display:block;font-size:12px;color:var(--mu)}.f .w{grid-column:1/-1}
+@media(max-width:560px){.f{grid-template-columns:1fr}}
+.imgs{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}.imgs img{max-width:100%;max-height:260px;border-radius:8px;border:1px solid var(--ln)}
+pre{white-space:pre-wrap;background:var(--bg);padding:8px;border-radius:8px;margin:4px 0;font:inherit}
+.gd{font-weight:700;padding:2px 10px;border-radius:99px;font-size:12px}.gd.grn{background:var(--grnbg);color:var(--grn)}.gd.amb{background:var(--ambbg);color:var(--amb)}.gd.red{background:var(--red);color:#fff}
+.ar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:8px 0;border-bottom:1px solid var(--ln)}.ar input[type=number]{width:84px;padding:3px 8px}.ar input[type=checkbox]{width:20px;height:20px}
+.up{color:var(--grn);font-weight:600}.dn{color:var(--red);font-weight:600}.panel.aim{border:2px solid var(--acc);margin-bottom:16px}.hd{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+h1{color:var(--acc)}header{box-shadow:0 1px 8px rgba(112,103,216,.10)}
+.btn:not(.p):not(.ok):not(.no){color:var(--acc);border-color:color-mix(in srgb,var(--acc) 30%,var(--ln))}.btn:not(.p):not(.ok):not(.no):hover{background:var(--accbg)}
+.btn.p:hover{background:#5c53c4;border-color:#5c53c4}.btn.ok:hover{filter:brightness(1.08)}.btn.no:hover{filter:brightness(1.08)}
+nav button:hover{background:var(--accbg);color:var(--acc)}input:focus,select:focus,textarea:focus{border-color:var(--acc);outline:2px solid color-mix(in srgb,var(--acc) 25%,transparent)}
+.panel,.tile{box-shadow:0 1px 3px rgba(112,103,216,.08)}.tile{border-top:3px solid var(--acc)}.tile.r{border-top-color:var(--red)}.panel.aim{background:var(--accbg)}
+th{background:var(--accbg);color:var(--acc);font-weight:600}tbody tr:hover td,tr:hover>td{background:color-mix(in srgb,var(--acc) 5%,transparent)}
+.col h3{background:color-mix(in srgb,var(--c,var(--ln)) 16%,var(--sf))}.col h3 span{background:var(--c);color:#fff;border-radius:99px;padding:0 9px;font-size:12px}
+.card.today{border-left-color:var(--amb);background:var(--ambbg)}.bd.today{background:var(--ambbg);color:var(--amb)}.card.today .bd.today{background:#fff3d6}
+.pg{background:var(--accbg);height:10px}.pg i{background:linear-gradient(90deg,var(--acc),var(--grn));border-radius:9px}
+svg polyline{stroke:var(--acc);stroke-width:3;stroke-linejoin:round}svg circle{fill:var(--acc);stroke:var(--sf);stroke-width:2}
+@media(max-width:560px){main{padding:12px}.board{grid-template-columns:repeat(5,78vw);scroll-snap-type:x mandatory}.col{scroll-snap-align:start}.tiles{grid-template-columns:repeat(2,1fr)}}
+#toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;display:none;z-index:60}
+</style></head><body>
+<header><h1>Ôn Đề</h1><nav id="nav"></nav><span class="sp"></span><span class="m" id="today"></span><button class="btn p" data-a="new">+ Thêm đề</button></header>
+<main id="app"></main><div id="modal"></div><div id="toast"></div>
+<script>
+const KEY="ondeV1",LV=["Mức 1 · Cần làm ngay","Mức 2","Mức 3","Mức 4","Mức 5 · Duy trì"],CL=["var(--l1)","var(--l2)","var(--l3)","var(--l4)","var(--l5)"];
+const DS={intervals:[3,7,14,30,60],failDays:1,offset:0,subjects:["Toán","Vật lý","Cơ học","Sử","Văn","Tiếng Anh","IELTS"]};
+let S={items:[],settings:{...DS},scores:[],plans:[],aims:[]},view="home",F={q:"",sub:"",diff:"",lv:"",st:""},sort="due";
+try{const r=localStorage.getItem(KEY);if(r){const o=JSON.parse(r);S.items=o.items||[];S.settings={...DS,...(o.settings||{})};S.scores=o.scores||[];S.plans=o.plans||[];S.aims=o.aims||[]}}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){toast("Không lưu được (bộ nhớ đầy?). Hãy xuất sao lưu.")}};
+const $=s=>document.querySelector(s),esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pad=n=>String(n).padStart(2,"0"),ymd=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+const today=()=>{const d=new Date();d.setDate(d.getDate()+(+S.settings.offset||0));return ymd(d)};
+const P=s=>{const[a,b,c]=s.split("-");return Date.UTC(a,b-1,c)};
+const diff=(a,b)=>Math.round((P(a)-P(b))/864e5),add=(s,n)=>{const d=new Date(P(s));d.setUTCDate(d.getUTCDate()+n);return d.toISOString().slice(0,10)};
+const fmt=s=>s?s.split("-").reverse().join("/"):"—";
+const left=it=>diff(it.due,today()),st=it=>{const d=left(it);return d<0?"over":d==0?"today":"later"};
+const col=it=>it.level==5&&left(it)<=0?1:it.level;
+const stT=it=>{const d=left(it);return d<0?`Quá hạn ${-d} ngày`:d==0?"Đến hạn hôm nay":`Còn ${d} ngày`};
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+function toast(t){const e=$("#toast");e.textContent=t;e.style.display="block";clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display="none",2500)}
+function filtered(skipSt){return S.items.filter(i=>{const q=F.q.toLowerCase();return(!q||[i.title,i.topic,i.chapter,i.type,i.content].join(" ").toLowerCase().includes(q))&&(!F.sub||i.subject==F.sub)&&(!F.diff||i.diff==F.diff)&&(!F.lv||i.level==F.lv)&&(skipSt||!F.st||st(i)==F.st||(F.st=="due"&&st(i)!="later"))})}
+const byDue=(a,b)=>a.due.localeCompare(b.due)||a.title.localeCompare(b.title);
+function solve(id,ok){const it=S.items.find(x=>x.id==id),T=today(),from=it.level,sc=$("#r_sc")?.value,mx=$("#r_mx")?.value;
+ if(ok){if(it.level<5)it.level++;else it.cycles=(it.cycles||0)+1;it.due=add(T,S.settings.intervals[from-1]);it.ok++}
+ else{it.level=1;it.due=add(T,S.settings.failDays);it.fail++}
+ it.last=T;it.hist.push({ts:Date.now(),date:T,ok,from,to:it.level,next:it.due});addScore(it,sc,mx);save();closeM();render();
+ toast(ok?`Đã xác nhận. Lên mức ${it.level}, ôn lại ${fmt(it.due)}`:`Về mức 1, làm lại ${fmt(it.due)}`)}
+function card(it){const c=col(it),s=st(it);return`<div class="card ${s}" style="--c:${CL[it.level-1]}"><div class="t">${esc(it.title)}</div><div class="m">${esc(it.subject)}${it.topic?" · "+esc(it.topic):""}</div>
+<div class="row"><span class="bd lv">Mức ${it.level}</span><span class="bd ${s}">${stT(it)}</span></div><div class="m">Ôn tiếp: ${fmt(it.due)}</div>
+<div class="row"><button class="btn s" data-a="view" data-id="${it.id}">Chi tiết</button>${s!="later"?`<button class="btn s ok" data-a="solve" data-id="${it.id}">Đã giải xong</button>`:""}</div></div>`}
+function stats(l){const T=today(),o=l.filter(i=>st(i)=="over"),d=l.filter(i=>st(i)=="today"),dn=l.filter(i=>i.hist.some(h=>h.date==T&&h.ok));
+ return{o,d,dn,later:l.filter(i=>st(i)=="later")}}
+function list(l,empty){return l.length?l.map(card).join(""):`<div class="empty">${empty}</div>`}
+function home(){const l=filtered(true),x=stats(l),T=today(),now=[...x.o,...x.d].sort(byDue);
+ const soon=x.later.filter(i=>left(i)<=7).sort(byDue);
+ const ex=l.filter(i=>i.exam&&diff(i.exam,T)>=0&&diff(i.exam,T)<=45).sort((a,b)=>a.exam.localeCompare(b.exam));
+ const subs=[...new Set([...S.settings.subjects,...S.items.map(i=>i.subject)])].map(s=>{const a=S.items.filter(i=>i.subject==s);if(!a.length)return"";const dd=a.filter(i=>st(i)!="later").length;const av=a.reduce((n,i)=>n+i.level,0)/a.length;
+ return`<tr><td>${esc(s)}</td><td>${a.length}</td><td style="color:${dd?"var(--red)":"inherit"}">${dd}</td><td><div class="pg" title="Mức TB ${av.toFixed(1)}/5"><i style="width:${av/5*100}%"></i></div></td></tr>`}).join("");
+ return`${aimPanel(today())}${filterBar(1)}<div class="tiles"><div class="tile ${x.o.length?"r":""}"><b>${x.o.length}</b><span>Quá hạn</span></div><div class="tile ${x.d.length?"r":""}"><b>${x.d.length}</b><span>Đến hạn hôm nay</span></div><div class="tile"><b>${x.later.length}</b><span>Chưa đến hạn</span></div><div class="tile"><b>${x.dn.length}</b><span>Đã xong hôm nay</span></div><div class="tile"><b>${l.length}</b><span>Tổng số đề</span></div></div>
+<div class="grid2"><div class="panel r"><h2 style="color:var(--red)">Cần làm ngay (${now.length})</h2><div class="col"><div class="cs" style="background:none">${list(now,"Không có đề nào cần giải lại. 🎉")}</div></div></div>
+<div><div class="panel"><h2>Sắp đến hạn (7 ngày tới)</h2><div class="cs col" style="background:none;border:0">${list(soon,"Chưa có đề nào sắp đến hạn.")}</div></div><br>
+<div class="panel"><h2>Đã hoàn thành hôm nay</h2><div class="cs col" style="background:none;border:0">${list(x.dn,"Hôm nay chưa xác nhận đề nào.")}</div></div></div>
+<div class="panel"><h2>Ưu tiên theo kỳ thi (45 ngày tới)</h2>${ex.length?`<div class="tw"><table><tr><th>Đề</th><th>Ngày thi</th><th>Trạng thái</th></tr>${ex.map(i=>`<tr><td>${esc(i.title)}<div class="m">${esc(i.subject)}</div></td><td>${fmt(i.exam)}<div class="m">còn ${diff(i.exam,T)} ngày</div></td><td><span class="bd ${st(i)}">${stT(i)}</span></td></tr>`).join("")}</table></div>`:'<div class="empty">Chưa có đề gắn ngày thi.</div>'}</div>
+<div class="panel"><h2>Tiến độ từng môn</h2><div class="tw"><table><tr><th>Môn</th><th>Đề</th><th>Đến hạn</th><th>Mức TB</th></tr>${subs||'<tr><td colspan=4 class="empty">Chưa có dữ liệu.</td></tr>'}</table></div></div></div>`}
+function filterBar(noSt){const subs=[...new Set([...S.settings.subjects,...S.items.map(i=>i.subject)])];
+ const o=(arr,v)=>arr.map(a=>`<option value="${a[0]}" ${String(v)==a[0]?"selected":""}>${a[1]}</option>`).join("");
+ return`<div class="bar"><input id="fq" placeholder="Tìm tên, chủ đề, nội dung…" value="${esc(F.q)}"><select data-f="sub"><option value="">Mọi môn</option>${o(subs.map(s=>[s,s]),F.sub)}</select>
+<select data-f="diff"><option value="">Mọi độ khó</option>${o([["Dễ","Dễ"],["Trung bình","Trung bình"],["Khó","Khó"]],F.diff)}</select>
+<select data-f="lv"><option value="">Mọi mức</option>${o([1,2,3,4,5].map(n=>[n,"Mức "+n]),F.lv)}</select>
+${noSt?"":`<select data-f="st"><option value="">Mọi trạng thái</option>${o([["over","Quá hạn"],["today","Hôm nay"],["due","Cần làm (quá hạn + hôm nay)"],["later","Chưa đến hạn"]],F.st)}</select>`}</div>`}
+function board(){const l=filtered(),cs=[1,2,3,4,5].map(n=>{const a=l.filter(i=>col(i)==n).sort(byDue);
+ return`<div class="col" style="--c:${CL[n-1]}"><h3>${LV[n-1]}<span>${a.length}</span></h3><div class="cs">${list(a,"Trống")}</div></div>`}).join("");
+ return`${filterBar()}<div class="board">${cs}</div><p class="m">Đề ở mức 5 khi đến hạn sẽ hiện ở cột 1 (đỏ) nhưng vẫn giữ nguyên mức và lịch sử.</p>`}
+function listV(){const l=filtered().sort(byDue);return`${filterBar()}<div class="panel tw"><table><tr><th>Đề</th><th>Môn / chủ đề</th><th>Mức</th><th>Giải gần nhất</th><th>Đến hạn</th><th>Còn lại</th><th></th></tr>${l.map(i=>`<tr><td><b>${esc(i.title)}</b></td><td>${esc(i.subject)}<div class="m">${esc(i.topic)}</div></td><td>${i.level}</td><td>${fmt(i.last)}</td><td>${fmt(i.due)}</td><td><span class="bd ${st(i)}">${stT(i)}</span></td><td style="white-space:nowrap"><button class="btn s" data-a="view" data-id="${i.id}">Xem</button> ${st(i)!="later"?`<button class="btn s ok" data-a="solve" data-id="${i.id}">Đã giải</button>`:""}</td></tr>`).join("")||'<tr><td colspan=7 class="empty">Không có đề phù hợp.</td></tr>'}</table></div>`}
+function settings(){const s=S.settings;return`<div class="panel" style="max-width:720px"><h2>Khoảng cách ôn (ngày)</h2><div class="f">${s.intervals.map((v,i)=>`<div><label>${i<4?`Mức ${i+1} → Mức ${i+2}`:"Mức 5 → quay lại cột 1"}</label><input type="number" min="1" data-iv="${i}" value="${v}"></div>`).join("")}<div><label>Làm lại sau khi thất bại</label><input type="number" min="0" id="sf" value="${s.failDays}"></div><div class="w"><label>Danh sách môn (cách nhau bằng dấu phẩy)</label><input id="ss" value="${esc(s.subjects.join(", "))}"></div></div>
+<p class="m">Đổi khoảng cách chỉ áp dụng cho lần xác nhận tiếp theo; ngày đến hạn và lịch sử cũ giữ nguyên.</p><button class="btn p" data-a="saveset">Lưu cài đặt</button>
+<h2 style="margin-top:20px">Sao lưu</h2><div class="row"><button class="btn" data-a="exp">Xuất dữ liệu</button><button class="btn" data-a="imp">Nhập từ ô bên dưới</button><input type="file" id="fi" accept=".json" style="width:auto"></div>
+<textarea id="bk" rows="5" placeholder="Dữ liệu JSON xuất ra sẽ hiện ở đây. Sao chép để lưu lại, hoặc dán vào đây rồi bấm Nhập." style="margin-top:8px"></textarea>
+<h2 style="margin-top:20px">Kiểm thử ngày</h2><div class="f"><div><label>Lệch ngày giả lập (vd +3 để thử đề đến hạn)</label><input type="number" id="of" value="${s.offset}"></div><div><label>&nbsp;</label><button class="btn" data-a="saveset">Áp dụng</button></div></div><p class="m">Dùng để kiểm tra lịch ôn mà không cần chờ. Đặt về 0 khi dùng thật.</p>
+<div class="row"><button class="btn no" data-a="wipe">Xóa toàn bộ dữ liệu</button></div></div>`}
+const TABS=[["home","Tổng quan"],["board","Kanban"],["list","Danh sách"],["score","Điểm"],["plan","Tiến độ"],["aim","Aim"],["set","Cài đặt"]];
+/* ===== Điểm · Tiến độ · Daily Aim ===== */
+const num=v=>v===""||v==null||isNaN(+v)?null:+v,subjects=()=>[...new Set([...S.settings.subjects,...S.items.map(i=>i.subject),...S.scores.map(x=>x.subject),...S.plans.map(x=>x.subject)])];
+const subOpts=(v,all)=>(all?'<option value="">Mọi môn</option>':"")+subjects().map(s=>`<option ${s==v?"selected":""}>${esc(s)}</option>`).join("");
+const I=(id,v,t="text",x="")=>`<input id="${id}" type="${t}" value="${esc(v)}" ${x}>`,L=(l,h,c="")=>`<div class="${c}"><label>${l}</label>${h}</div>`,V=x=>$(x).value.trim();
+let SF={sub:"",st:""},PF={sub:"",st:"",before:""},AD=null;const ad=()=>AD||today();
+const pctOf=r=>r.total>0&&r.right!=null?r.right/r.total*100:(r.score!=null&&r.max>0?r.score/r.max*100:null);
+const cmp=(a,b)=>a.date.localeCompare(b.date)||a.ts-b.ts;
+const dtxt=d=>d==null?"—":`<span class="${d>=0?"up":"dn"}">${d>=0?"▲":"▼"} ${Math.abs(d).toFixed(1)}%</span>`;
+function dlt(r){const a=[...S.scores].sort(cmp),i=a.findIndex(x=>x.id==r.id);for(let j=i-1;j>=0;j--)if(a[j].subject==r.subject&&a[j].set==r.set&&pctOf(a[j])!=null)return pctOf(r)-pctOf(a[j]);return null}
+const SUBC=["#7067D8","#e5484d","#2fae72","#f59e0b","#3b9ae8","#d946a8","#0f9d9a","#8a6d3b"],subColor=s=>SUBC[Math.max(0,subjects().indexOf(s))%SUBC.length],lastMax=s=>[...S.scores].reverse().find(x=>x.subject==s)?.max||10;
+function addScore(it,sc,mx){sc=num(sc);mx=num(mx)||10;if(sc==null)return;if(sc<0||sc>mx){toast("Điểm phải từ 0 đến thang điểm – chưa lưu điểm");return}S.scores.push({id:uid(),ts:Date.now(),subject:it.subject,set:it.title,date:today(),max:mx,score:sc,right:null,total:null,time:null,status:"Hoàn thành",note:"Lần "+(S.scores.filter(x=>x.itemId==it.id).length+1),itemId:it.id})}
+function subCards(l){const subs=[...new Set(l.map(r=>r.subject))];if(!subs.length)return"";return`<div class="tiles">${subs.map(s=>{const a=l.filter(r=>r.subject==s).sort(cmp),p=a.map(pctOf).filter(v=>v!=null),n=p.length,c=subColor(s);return`<div class="tile" style="border-top-color:${c}"><span style="color:${c};font-weight:700">${esc(s)}</span><b>${n?(p.reduce((x,y)=>x+y,0)/n).toFixed(1)+"%":"—"}</b><span>TB · ${a.length} đợt · cao nhất ${n?Math.max(...p).toFixed(1)+"%":"—"}</span><div>${dtxt(n>1?p[n-1]-p[n-2]:null)} <span class="m">so lần trước</span></div></div>`}).join("")}</div>`}
+function chart(l){const ds=[...new Set(l.filter(r=>pctOf(r)!=null).map(r=>r.date))].sort();if(!ds.length)return'<div class="empty">Chưa có dữ liệu để vẽ biểu đồ.</div>';
+ const subs=[...new Set(l.map(r=>r.subject))],W=600,H=230,m=34,X=d=>ds.length==1?W/2:m+ds.indexOf(d)*(W-2*m)/(ds.length-1),Y=v=>H-m-v/100*(H-2*m);
+ const lines=subs.map(s=>{const pts=l.filter(r=>r.subject==s&&pctOf(r)!=null).sort(cmp),c=subColor(s);return`<polyline fill="none" style="stroke:${c}" stroke-linejoin="round" points="${pts.map(r=>X(r.date)+","+Y(pctOf(r))).join(" ")}"/>`+pts.map(r=>`<circle cx="${X(r.date)}" cy="${Y(pctOf(r))}" r="4" style="fill:${c}"><title>${esc(s)} · ${fmt(r.date)} · ${esc(r.set)} · ${r.score}/${r.max} (${pctOf(r).toFixed(0)}%)</title></circle>`).join("")}).join("");
+ return`<div class="row" style="margin:0 0 6px">${subs.map(s=>`<span class="bd" style="background:${subColor(s)};color:#fff">${esc(s)}</span>`).join("")}</div><svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto" role="img" aria-label="Biểu đồ điểm theo môn"><g stroke="var(--ln)" fill="var(--mu)" font-size="10">${[0,50,100].map(v=>`<line x1="${m}" x2="${W-m}" y1="${Y(v)}" y2="${Y(v)}"/><text x="2" y="${Y(v)+3}" stroke="none">${v}%</text>`).join("")}<text x="${m}" y="${H-8}" stroke="none">${fmt(ds[0])}</text><text x="${W-m}" y="${H-8}" text-anchor="end" stroke="none">${fmt(ds[ds.length-1])}</text></g>${lines}</svg>`}
+/* bản biểu đồ cũ (1 đường), không còn dùng – sẽ xóa khi tách file */
+function chartOld(l){const p=l.map(r=>({r,y:pctOf(r)})).filter(q=>q.y!=null);if(!p.length)return'<div class="empty">Chưa có dữ liệu để vẽ biểu đồ.</div>';
+ const W=600,H=210,m=32,n=p.length,X=i=>n==1?W/2:m+i*(W-2*m)/(n-1),Y=v=>H-m-v/100*(H-2*m);
+ return`<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto" role="img" aria-label="Biểu đồ tỷ lệ điểm theo thời gian"><g stroke="var(--ln)" fill="var(--mu)" font-size="10">${[0,50,100].map(v=>`<line x1="${m}" x2="${W-m}" y1="${Y(v)}" y2="${Y(v)}"/><text x="2" y="${Y(v)+3}" stroke="none">${v}%</text>`).join("")}<text x="${m}" y="${H-8}" stroke="none">${fmt(p[0].r.date)}</text><text x="${W-m}" y="${H-8}" text-anchor="end" stroke="none">${fmt(p[n-1].r.date)}</text></g><polyline fill="none" stroke="var(--acc)" stroke-width="2" points="${p.map((q,i)=>X(i)+","+Y(q.y)).join(" ")}"/>${p.map((q,i)=>`<circle cx="${X(i)}" cy="${Y(q.y)}" r="4" fill="var(--acc)"><title>${fmt(q.r.date)} · ${esc(q.r.subject)} · ${esc(q.r.set)} · ${q.r.score}/${q.r.max} (${q.y.toFixed(0)}%)</title></circle>`).join("")}</svg>`}
+function scoreV(){const l=S.scores.filter(r=>(!SF.sub||r.subject==SF.sub)&&(!SF.st||r.status==SF.st)).sort(cmp),p=l.map(pctOf).filter(v=>v!=null),n=p.length;
+ const last=n>1?p[n-1]-p[n-2]:null;
+ return`<div class="bar"><select data-sf="sub">${subOpts(SF.sub,1)}</select><select data-sf="st"><option value="">Mọi trạng thái</option>${["Hoàn thành","Đang làm","Cần làm lại"].map(s=>`<option ${SF.st==s?"selected":""}>${s}</option>`).join("")}</select><button class="btn p" data-n="sc-new" style="flex:0 0 auto">+ Thêm đợt làm bài</button></div>
+${subCards(l)}
+<div class="panel" style="margin-bottom:16px"><h2>Biểu đồ điểm theo môn (mỗi môn một đường, tính theo %)</h2>${chart(l)}</div>
+<div class="panel tw"><table><tr><th>Ngày</th><th>Môn / bộ đề</th><th>Điểm</th><th>Đúng/Tổng</th><th>Tỷ lệ</th><th>Thời gian</th><th>So lần trước</th><th>Trạng thái</th><th></th></tr>${[...l].reverse().map(r=>{const q=pctOf(r);return`<tr><td>${fmt(r.date)}</td><td><b>${esc(r.set)}</b><div class="m"><b style="color:${subColor(r.subject)}">● ${esc(r.subject)}</b>${r.note?" · "+esc(r.note):""}</div></td><td>${r.score}/${r.max}</td><td>${r.right!=null?r.right+"/"+(r.total??"?"):"—"}</td><td>${q==null?"—":q.toFixed(1)+"%"}</td><td>${r.time!=null?r.time+" phút":"—"}</td><td>${dtxt(dlt(r))}</td><td>${esc(r.status)}</td><td style="white-space:nowrap"><button class="btn s" data-n="sc-edit" data-id="${r.id}">Sửa</button> <button class="btn s" data-n="sc-del" data-id="${r.id}">Xóa</button></td></tr>`}).join("")||'<tr><td colspan=9 class="empty">Chưa có đợt làm bài nào.</td></tr>'}</table></div>`}
+function scForm(id){const r=S.scores.find(x=>x.id==id)||{subject:S.settings.subjects[0],set:"",date:today(),max:S.scores.at(-1)?.max||10,score:"",right:"",total:"",time:"",status:"Hoàn thành",note:""};
+ openM(`<h2>${id?"Sửa":"Thêm"} đợt làm bài</h2><div class="f">${L("Môn học",I("s_sub",r.subject,"text",'list="dl2"')+`<datalist id="dl2">${subjects().map(s=>`<option>${esc(s)}`).join("")}</datalist>`)}${L("Tên bộ đề *",I("s_set",r.set))}${L("Ngày làm",I("s_date",r.date,"date"))}${L("Thang điểm (tối đa)",I("s_max",r.max,"number",'min="1" step="any"'))}${L("Số câu đúng",I("s_right",r.right??"","number",'min="0"'))}${L("Tổng số câu",I("s_total",r.total??"","number",'min="1"'))}${L("Điểm (để trống = tự tính từ số câu đúng)",I("s_score",r.score??"","number",'step="any"'))}${L("Thời gian làm (phút)",I("s_time",r.time??"","number",'min="0"'))}${L("Trạng thái",`<select id="s_st">${["Hoàn thành","Đang làm","Cần làm lại"].map(s=>`<option ${r.status==s?"selected":""}>${s}</option>`).join("")}</select>`)}${L("Ghi chú",I("s_note",r.note),"text","")}</div><div class="row" style="margin-top:12px"><button class="btn p" data-n="sc-save" data-id="${id||""}">Lưu</button><button class="btn" data-a="close">Hủy</button></div>`)}
+function pState(p){const T=today();if(p.status=="done")return["done","Đã xác nhận hoàn thành","later"];if(p.due&&p.due<T)return["over","Quá hạn","over"];if(p.done>=p.need)return["ready","Đủ số bài – chờ xác nhận","today"];return["open","Đang làm",""]}
+function planV(){const T=today(),l=S.plans.filter(p=>{const k=pState(p)[0];return(!PF.sub||p.subject==PF.sub)&&(!PF.before||(p.due&&p.due<=PF.before))&&(!PF.st||PF.st==k||(PF.st=="soon"&&p.status!="done"&&p.due&&diff(p.due,T)>=0&&diff(p.due,T)<=7))}).sort((a,b)=>(a.status=="done")-(b.status=="done")||(a.due||"9").localeCompare(b.due||"9"));
+ return`<div class="bar"><select data-pf="sub">${subOpts(PF.sub,1)}</select><select data-pf="st"><option value="">Mọi trạng thái</option>${[["open","Đang làm"],["ready","Chờ xác nhận"],["over","Quá hạn"],["soon","Hạn trong 7 ngày"],["done","Đã hoàn thành"]].map(o=>`<option value="${o[0]}" ${PF.st==o[0]?"selected":""}>${o[1]}</option>`).join("")}</select><input type="date" data-pf="before" value="${PF.before}" title="Hạn không muộn hơn ngày" style="flex:1 1 140px"><button class="btn p" data-n="pl-new" style="flex:0 0 auto">+ Thêm đợt</button></div>
+ <div class="grid2">${l.map(p=>{const s=pState(p),pc=Math.min(100,p.need?p.done/p.need*100:0);return`<div class="panel"><div class="hd"><b>${esc(p.title)}</b><span class="bd ${s[2]}">${s[1]}</span></div><div class="m">${esc(p.subject)}${p.goal?" · Mục tiêu: "+esc(p.goal):""}</div><div class="pg" style="margin:8px 0"><i style="width:${pc}%"></i></div><div>${pc.toFixed(0)}% · Đã làm <b>${p.done}</b>/${p.need} · Còn lại <b>${Math.max(0,p.need-p.done)}</b></div><div class="m">Hạn: ${fmt(p.due)}${p.due&&p.status!="done"?" ("+(diff(p.due,T)<0?"trễ "+-diff(p.due,T):"còn "+diff(p.due,T))+" ngày)":""}${p.note?" · "+esc(p.note):""}</div><div class="row">${p.status!="done"?`<button class="btn s" data-n="pl-inc" data-d="-1" data-id="${p.id}">−1 bài</button><button class="btn s" data-n="pl-inc" data-d="1" data-id="${p.id}">+1 bài</button><button class="btn s ok" data-n="pl-fin" data-id="${p.id}">Xác nhận hoàn thành</button>`:`<button class="btn s" data-n="pl-open" data-id="${p.id}">Mở lại</button>`}<button class="btn s" data-n="pl-edit" data-id="${p.id}">Sửa</button><button class="btn s" data-n="pl-del" data-id="${p.id}">Xóa</button></div></div>`}).join("")||'<div class="empty">Chưa có đợt nào phù hợp.</div>'}</div>`}
+function plForm(id){const p=S.plans.find(x=>x.id==id)||{title:"",subject:S.settings.subjects[0],goal:"",need:10,done:0,due:add(today(),7),note:""};
+ openM(`<h2>${id?"Sửa":"Thêm"} đợt tiến độ</h2><div class="f">${L("Tên đợt *",I("p_t",p.title),"w")}${L("Môn học",I("p_sub",p.subject,"text",'list="dl2"')+`<datalist id="dl2">${subjects().map(s=>`<option>${esc(s)}`).join("")}</datalist>`)}${L("Hạn hoàn thành",I("p_due",p.due,"date"))}${L("Mục tiêu",I("p_goal",p.goal),"w")}${L("Số bài cần làm",I("p_need",p.need,"number",'min="1"'))}${L("Số bài đã hoàn thành",I("p_done",p.done,"number",'min="0"'))}${L("Ghi chú",I("p_note",p.note),"w")}</div><div class="row" style="margin-top:12px"><button class="btn p" data-n="pl-save" data-id="${id||""}">Lưu</button><button class="btn" data-a="close">Hủy</button></div>`)}
+/* Daily Aim */
+const aimsOf=d=>S.aims.filter(a=>a.date==d);
+const actual=a=>a.auto?S.items.reduce((n,i)=>n+i.hist.filter(h=>h.date==a.date&&h.ok&&(!a.subject||i.subject==a.subject)).length,0):a.actual;
+const aimRate=a=>{const t=+a.target,v=actual(a);return t>0&&v!=null?Math.min(100,v/t*100):0};
+function grade(l){const t=l.length;if(!t)return null;const r=l.filter(a=>a.done).length/t*100,g=r>=100?["Xuất sắc","grn"]:r>=80?["Tốt","grn"]:r>50?["Khá","amb"]:r==50?["Chưa đạt mức Khá","amb"]:["Tệ","red"];return{r,g:g[0],c:g[1],n:l.filter(a=>a.done).length,t}}
+function aimPanel(d){const l=aimsOf(d),g=grade(l),v=a=>actual(a);
+ return`<div class="panel aim"><div class="hd"><h2 style="margin:0">${d==today()?"Mục tiêu hôm nay (Daily Aim)":"Mục tiêu ngày "+fmt(d)}</h2>${g?`<span class="gd ${g.c}">${g.g} · ${g.r.toFixed(0)}% (${g.n}/${g.t} việc)</span>`:'<span class="m">Chưa có mục tiêu</span>'}<span class="sp"></span><button class="btn s p" data-n="ai-new" data-d="${d}">+ Thêm mục tiêu</button></div>${l.map(a=>`<div class="ar"><input type="checkbox" data-n="ai-tg" data-id="${a.id}" ${a.done?"checked":""} aria-label="Đã hoàn thành"><div style="flex:1 1 200px"><b>${esc(a.text)}</b> ${a.subject?`<span class="bd">${esc(a.subject)}</span>`:""} ${!a.done&&v(a)!=null&&+a.target>0&&v(a)>=+a.target?'<span class="bd later">Đạt chỉ tiêu – tick để xác nhận</span>':""}<div class="m">Aim: ${esc(a.target)} ${esc(a.unit)}${a.note?" · "+esc(a.note):""}</div></div><div class="m">Thực tế: ${a.auto?`<b>${v(a)}</b> (tự tính từ đề đã ôn)`:`<input type="number" step="any" data-aiact="${a.id}" value="${v(a)??""}">`}</div><div style="width:90px"><div class="pg"><i style="width:${aimRate(a)}%"></i></div><span class="m">${aimRate(a).toFixed(0)}%</span></div><button class="btn s" data-n="ai-edit" data-id="${a.id}">Sửa</button><button class="btn s" data-n="ai-del" data-id="${a.id}">Xóa</button></div>`).join("")||'<div class="empty">Chưa có mục tiêu nào cho ngày này. Thêm mục tiêu hoặc chép từ ngày trước ở tab Aim.</div>'}</div>`}
+function aimV(){const d=ad(),ds=[...new Set(S.aims.map(a=>a.date))].sort().reverse();
+ return`<div class="bar"><button class="btn" data-n="ai-day" data-d="-1" style="flex:0 0 auto">‹ Hôm trước</button><input type="date" data-ad value="${d}" style="flex:0 1 160px"><button class="btn" data-n="ai-day" data-d="1" style="flex:0 0 auto">Hôm sau ›</button><button class="btn" data-n="ai-today" style="flex:0 0 auto">Về hôm nay</button><button class="btn" data-n="ai-copy" style="flex:0 0 auto">Chép mục tiêu từ ngày trước</button></div>${aimPanel(d)}
+ <div class="panel tw"><h2>Lịch sử theo ngày</h2><table><tr><th>Ngày</th><th>Hoàn thành</th><th>Tỷ lệ</th><th>Xếp loại</th><th></th></tr>${ds.map(x=>{const g=grade(aimsOf(x));return`<tr><td>${fmt(x)}</td><td>${g.n}/${g.t}</td><td>${g.r.toFixed(0)}%</td><td><span class="gd ${g.c}">${g.g}</span></td><td><button class="btn s" data-n="ai-day" data-to="${x}">Xem / sửa</button></td></tr>`}).join("")||'<tr><td colspan=5 class="empty">Chưa có lịch sử.</td></tr>'}</table><p class="m">Xếp loại: 100% Xuất sắc · 80% đến dưới 100% Tốt · trên 50% đến dưới 80% Khá · đúng 50% Chưa đạt mức Khá · dưới 50% Tệ.</p></div>`}
+function aiForm(id,d){const a=S.aims.find(x=>x.id==id)||{text:"",subject:"",target:"",unit:"điểm",auto:false,note:"",date:d};
+ openM(`<h2>${id?"Sửa":"Thêm"} mục tiêu · ${fmt(a.date)}</h2><div class="f">${L("Nội dung *",I("a_tx",a.text),"w")}${L("Môn học",I("a_sb",a.subject,"text",'list="dl2"')+`<datalist id="dl2">${subjects().map(s=>`<option>${esc(s)}`).join("")}</datalist>`)}${L("Chỉ tiêu (số)",I("a_tg",a.target,"number",'step="any" min="0"'))}${L("Đơn vị (điểm, bộ bài, thẻ…)",I("a_un",a.unit))}${L("Cách tính kết quả",`<select id="a_au"><option value="0">Nhập tay</option><option value="1" ${a.auto?"selected":""}>Tự đếm số đề ôn thành công trong ngày</option></select>`)}${L("Ghi chú",I("a_nt",a.note),"w")}</div><div class="row" style="margin-top:12px"><button class="btn p" data-n="ai-save" data-id="${id||""}" data-d="${a.date}">Lưu</button><button class="btn" data-a="close">Hủy</button></div>`)}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-n]");if(!b)return;const n=b.dataset.n,id=b.dataset.id,D=b.dataset.d;
+ if(n=="sc-new")scForm();else if(n=="sc-edit")scForm(id);
+ else if(n=="sc-del")confirmM("Xóa bản ghi điểm này?",()=>{S.scores=S.scores.filter(x=>x.id!=id);save();render()});
+ else if(n=="sc-save"){const mx=num(V("#s_max")),rt=num(V("#s_right")),tt=num(V("#s_total"));let sc=num(V("#s_score"));if(!V("#s_set"))return toast("Nhập tên bộ đề");if(!(mx>0))return toast("Thang điểm phải lớn hơn 0");if(rt!=null&&tt!=null&&rt>tt)return toast("Số câu đúng không được lớn hơn tổng số câu");
+  if(sc==null&&rt!=null&&tt>0)sc=Math.round(rt/tt*mx*100)/100;if(sc==null)return toast("Nhập điểm hoặc số câu đúng và tổng số câu");
+  const d={subject:V("#s_sub")||"Khác",set:V("#s_set"),date:$("#s_date").value||today(),max:mx,score:sc,right:rt,total:tt,time:num(V("#s_time")),status:$("#s_st").value,note:V("#s_note")};
+  if(id)Object.assign(S.scores.find(x=>x.id==id),d);else S.scores.push({...d,id:uid(),ts:Date.now()});save();closeM();render();toast("Đã lưu")}
+ else if(n=="pl-new")plForm();else if(n=="pl-edit")plForm(id);
+ else if(n=="pl-save"){const nd=num(V("#p_need")),dn=num(V("#p_done"))||0;if(!V("#p_t"))return toast("Nhập tên đợt");if(!(nd>=1))return toast("Số bài cần làm tối thiểu là 1");const d={title:V("#p_t"),subject:V("#p_sub")||"Khác",goal:V("#p_goal"),need:nd,done:Math.max(0,dn),due:$("#p_due").value,note:V("#p_note")};
+  if(id)Object.assign(S.plans.find(x=>x.id==id),d);else S.plans.push({...d,id:uid(),status:"open"});save();closeM();render();toast("Đã lưu")}
+ else if(n=="pl-inc"){const p=S.plans.find(x=>x.id==id);p.done=Math.max(0,p.done+ +D);save();render()}
+ else if(n=="pl-fin")confirmM("Xác nhận đợt này đã hoàn thành?",()=>{S.plans.find(x=>x.id==id).status="done";save();render()});
+ else if(n=="pl-open"){S.plans.find(x=>x.id==id).status="open";save();render()}
+ else if(n=="pl-del")confirmM("Xóa đợt tiến độ này?",()=>{S.plans=S.plans.filter(x=>x.id!=id);save();render()});
+ else if(n=="ai-new")aiForm("",D);else if(n=="ai-edit")aiForm(id);
+ else if(n=="ai-save"){if(!V("#a_tx"))return toast("Nhập nội dung mục tiêu");const d={text:V("#a_tx"),subject:V("#a_sb"),target:V("#a_tg"),unit:V("#a_un"),auto:$("#a_au").value=="1",note:V("#a_nt")};
+  if(id)Object.assign(S.aims.find(x=>x.id==id),d);else S.aims.push({...d,id:uid(),date:D,actual:null,done:false});save();closeM();render()}
+ else if(n=="ai-tg"){S.aims.find(x=>x.id==id).done=b.checked;save();render()}
+ else if(n=="ai-del")confirmM("Xóa mục tiêu này?",()=>{S.aims=S.aims.filter(x=>x.id!=id);save();render()});
+ else if(n=="ai-day"){AD=b.dataset.to||add(ad(),+D);render();scrollTo(0,0)}
+ else if(n=="ai-today"){AD=null;render()}
+ else if(n=="ai-copy"){const d=ad(),prev=[...new Set(S.aims.filter(a=>a.date<d).map(a=>a.date))].sort().pop();if(!prev)return toast("Chưa có ngày trước để chép");if(aimsOf(d).length&&!confirm)return;aimsOf(prev).forEach(a=>S.aims.push({...a,id:uid(),date:d,actual:null,done:false}));save();render();toast("Đã chép từ "+fmt(prev))}});
+document.addEventListener("change",e=>{const t=e.target.dataset;if(t.aiact){S.aims.find(x=>x.id==t.aiact).actual=num(e.target.value);save();render()}else if(t.sf){SF[t.sf]=e.target.value;render()}else if(t.pf){PF[t.pf]=e.target.value;render()}else if("ad" in t){AD=e.target.value||null;render()}});
+function render(){$("#nav").innerHTML=TABS.map(t=>`<button class="${view==t[0]?"on":""}" data-v="${t[0]}">${t[1]}</button>`).join("");
+ $("#today").textContent="Hôm nay "+fmt(today())+(S.settings.offset?" (giả lập)":"");
+ $("#app").innerHTML=({home,board,list:listV,score:scoreV,plan:planV,aim:aimV,set:settings})[view]()}
+function openM(h){const m=$("#modal");m.innerHTML=`<div class="dlg">${h}</div>`;m.classList.add("on")}
+function closeM(){$("#modal").classList.remove("on")}
+function confirmM(msg,fn){openM(`<p>${msg}</p><div class="row"><button class="btn no" id="cy">Xác nhận</button><button class="btn" data-a="close">Hủy</button></div>`);$("#cy").onclick=()=>{closeM();fn()}}
+let imgs=[];
+function form(id){const it=S.items.find(x=>x.id==id)||{title:"",subject:S.settings.subjects[0],topic:"",chapter:"",type:"",diff:"Trung bình",exam:"",content:"",solution:"",img:[],due:today()};imgs=[...(it.img||[])];
+ openM(`<h2>${id?"Sửa đề":"Thêm đề mới"}</h2><div class="f"><div class="w"><label>Tên đề *</label><input id="a_title" value="${esc(it.title)}"></div>
+<div><label>Môn học</label><input id="a_sub" list="dl" value="${esc(it.subject)}"><datalist id="dl">${S.settings.subjects.map(s=>`<option>${esc(s)}`).join("")}</datalist></div>
+<div><label>Độ khó</label><select id="a_diff">${["Dễ","Trung bình","Khó"].map(d=>`<option ${it.diff==d?"selected":""}>${d}</option>`).join("")}</select></div>
+<div><label>Chủ đề</label><input id="a_topic" value="${esc(it.topic)}"></div><div><label>Chương</label><input id="a_ch" value="${esc(it.chapter)}"></div>
+<div><label>Dạng bài</label><input id="a_type" value="${esc(it.type)}"></div><div><label>Ngày thi liên quan</label><input type="date" id="a_exam" value="${it.exam||""}"></div>
+<div class="w"><label>Nội dung đề / mô tả (có thể gồm nhiều câu)</label><textarea id="a_content" rows="4">${esc(it.content)}</textarea></div>
+<div class="w"><label>Lời giải / ghi chú riêng</label><textarea id="a_sol" rows="3">${esc(it.solution)}</textarea></div>
+<div class="w"><label>Ảnh chụp đề bài</label><input type="file" id="a_img" accept="image/*" multiple><div class="imgs" id="a_prev"></div></div>
+${id?"":`<div><label>Ngày đến hạn lần đầu</label><input type="date" id="a_due" value="${it.due}"></div>`+L("Điểm lần 1 (tùy chọn)",I("a_sc","","number",'step="any" min="0"'))+L("Thang điểm",I("a_mx",lastMax(it.subject),"number",'min="1" step="any"'))}</div>
+<div class="row" style="margin-top:12px"><button class="btn p" data-a="saveitem" data-id="${id||""}">Lưu đề</button><button class="btn" data-a="close">Hủy</button></div>`);prev();
+ $("#a_img").onchange=async e=>{for(const f of e.target.files)imgs.push(await shrink(f));prev()}}
+const prev=()=>{$("#a_prev").innerHTML=imgs.map((s,i)=>`<div><img src="${s}" style="max-height:80px"><br><button class="btn s" data-a="rmimg" data-i="${i}">Gỡ</button></div>`).join("")};
+const shrink=f=>new Promise(r=>{const fr=new FileReader();fr.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,1000/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=im.width*k;c.height=im.height*k;c.getContext("2d").drawImage(im,0,0,c.width,c.height);r(c.toDataURL("image/jpeg",.6))};im.src=fr.result};fr.readAsDataURL(f)});
+function detail(id){const it=S.items.find(x=>x.id==id),s=st(it);
+ openM(`<h2>${esc(it.title)}</h2><div class="row"><span class="bd lv">Mức ${it.level}</span><span class="bd ${s}">${stT(it)}</span><span class="bd">${esc(it.subject)}</span><span class="bd">${esc(it.diff)}</span></div>
+<p class="m">${[it.topic,it.chapter,it.type].filter(Boolean).map(esc).join(" · ")||"Chưa có chủ đề"}<br>Thêm: ${fmt(it.added)} · Giải gần nhất: ${fmt(it.last)} · Đến hạn: ${fmt(it.due)}${it.exam?" · Thi: "+fmt(it.exam):""}<br>Thành công: ${it.ok} · Thất bại: ${it.fail}${it.cycles?" · Chu kỳ duy trì: "+it.cycles:""}</p>
+${it.content?`<h2>Đề bài</h2><pre>${esc(it.content)}</pre>`:""}${it.img?.length?`<div class="imgs">${it.img.map(s=>`<img src="${s}">`).join("")}</div>`:""}
+${it.solution?`<details><summary>Lời giải / ghi chú (chỉ xem sau khi đã tự giải)</summary><pre>${esc(it.solution)}</pre></details>`:""}
+<h2 style="margin-top:12px">Lịch sử ôn (${it.hist.length})</h2>${it.hist.length?`<div class="tw"><table><tr><th>Ngày</th><th>Kết quả</th><th>Mức</th><th>Hẹn lại</th></tr>${[...it.hist].reverse().map(h=>`<tr><td>${fmt(h.date)}</td><td>${h.ok?"✔ Thành công":"✘ Thất bại"}</td><td>${h.from} → ${h.to}</td><td>${fmt(h.next)}</td></tr>`).join("")}</table></div>`:'<div class="m">Chưa có lần ôn nào.</div>'}
+<div class="row" style="margin-top:12px">${s!="later"?`<button class="btn ok" data-a="solve" data-id="${id}">Đã giải xong</button><button class="btn no" data-a="fail" data-id="${id}">Không giải được / xem lời giải</button>`:""}<button class="btn" data-a="edit" data-id="${id}">Sửa</button><button class="btn" data-a="del" data-id="${id}">Xóa</button><button class="btn" data-a="close">Đóng</button></div>`)}
+function solveM(id){const it=S.items.find(x=>x.id==id),lm=lastMax(it.subject),k=S.scores.filter(x=>x.itemId==id).length+1;openM(`<h2>${esc(it.title)}</h2><p>Bạn đã tự giải lại đề này mà không cần xem lời giải?</p><div class="f">${L("Điểm lần "+k+" (tùy chọn)",I("r_sc","","number",'step="any" min="0"'))}${L("Thang điểm",I("r_mx",lm,"number",'min="1" step="any"'))}</div><p class="m">Nếu nhập điểm, điểm sẽ được lưu sang tab Điểm theo môn.</p><div class="row"><button class="btn ok" data-a="yes" data-id="${id}">Giải được</button><button class="btn no" data-a="fail" data-id="${id}">Không giải được / phải xem lời giải</button><button class="btn" data-a="close">Hủy</button></div>`)}
+document.addEventListener("click",e=>{const v=e.target.closest("[data-v]");if(v){view=v.dataset.v;render();return}
+ const b=e.target.closest("[data-a]");if(!b){if(e.target.id=="modal")closeM();return}const a=b.dataset.a,id=b.dataset.id,g=x=>$(x).value.trim();
+ if(a=="new")form();else if(a=="close")closeM();else if(a=="view")detail(id);else if(a=="edit")form(id);else if(a=="solve")solveM(id);else if(a=="yes")solve(id,1);else if(a=="fail")solve(id,0);
+ else if(a=="rmimg"){imgs.splice(+b.dataset.i,1);prev()}
+ else if(a=="del")confirmM("Xóa đề này và toàn bộ lịch sử ôn? Không thể hoàn tác.",()=>{S.items=S.items.filter(x=>x.id!=id);save();render();toast("Đã xóa")});
+ else if(a=="saveitem"){if(!g("#a_title"))return toast("Nhập tên đề");const d={title:g("#a_title"),subject:g("#a_sub")||"Khác",diff:$("#a_diff").value,topic:g("#a_topic"),chapter:g("#a_ch"),type:g("#a_type"),exam:$("#a_exam").value,content:$("#a_content").value,solution:$("#a_sol").value,img:imgs};
+  if(id)Object.assign(S.items.find(x=>x.id==id),d);else{const ni={...d,id:uid(),added:today(),last:"",due:$("#a_due").value||today(),level:1,ok:0,fail:0,cycles:0,hist:[]};S.items.push(ni);addScore(ni,$("#a_sc").value,$("#a_mx").value)}
+  if(!S.settings.subjects.includes(d.subject))S.settings.subjects.push(d.subject);save();closeM();render();toast("Đã lưu")}
+ else if(a=="saveset"){S.settings.intervals=[...document.querySelectorAll("[data-iv]")].map(x=>Math.max(1,+x.value||1));S.settings.failDays=Math.max(0,+$("#sf").value||0);S.settings.subjects=g("#ss").split(",").map(x=>x.trim()).filter(Boolean);S.settings.offset=+$("#of").value||0;save();render();toast("Đã lưu cài đặt")}
+ else if(a=="exp"){$("#bk").value=JSON.stringify(S);$("#bk").select();try{navigator.clipboard.writeText($("#bk").value);toast("Đã sao chép dữ liệu")}catch(x){toast("Hãy sao chép nội dung trong ô")}}
+ else if(a=="imp")doImport($("#bk").value);
+ else if(a=="wipe")confirmM("Xóa TOÀN BỘ đề và cài đặt?",()=>{S={items:[],settings:{...DS},scores:[],plans:[],aims:[]};save();render()})});
+function doImport(t){try{const o=JSON.parse(t);if(!Array.isArray(o.items))throw 0;confirmM(`Nhập ${o.items.length} đề và thay thế dữ liệu hiện tại?`,()=>{S={items:o.items,settings:{...DS,...(o.settings||{})},scores:o.scores||[],plans:o.plans||[],aims:o.aims||[]};save();render();toast("Đã nhập")})}catch(e){toast("Dữ liệu không hợp lệ")}}
+document.addEventListener("change",e=>{if(e.target.dataset.f){F[e.target.dataset.f]=e.target.value;render()}if(e.target.id=="fi"){const r=new FileReader();r.onload=()=>doImport(r.result);r.readAsText(e.target.files[0])}});
+document.addEventListener("input",e=>{if(e.target.id=="fq"){F.q=e.target.value;const p=e.target.selectionStart;render();const n=$("#fq");n.focus();n.setSelectionRange(p,p)}});
+document.addEventListener("visibilitychange",()=>{if(!document.hidden&&!$("#modal").classList.contains("on"))render()});
+render();
+</script></body></html>
